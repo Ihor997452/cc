@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+
+    <form th:action="new" method="post" enctype="multipart/form-data">
+        <label for="name">Name:</label><br>
+        <input type="text" id="name" name="name"><br>
+        <label for="desc">Description:</label><br>
+        <input type="text" id="desc" name="desc">
+        <label for="portionSize">Portion Size (g):</label><br>
+        <input type="number" id="portionSize" name="portionSize">
+        <label for="price">Price (g):</label><br>
+        <input type="number" step="0.01" id="price" name="price">
+
+        <label>
+            <select name="category">
+                    <option th:each="category: ${T(com.my.model.Category).values()}"
+                            th:value="${category}"
+                            th:text="${category}"/>
+            </select>
+        </label>
+
+        <label for="image">Image</label>
+        <input type="file" id="image" accept="image/*" name="image">
+
+        <button type="submit">Add</button>
+    </form>
+
+</body>
+</html>

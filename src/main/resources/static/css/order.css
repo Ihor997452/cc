@@ -1,0 +1,86 @@
+.order-wrapper {
+    font-family: 'Raleway', sans-serif;
+    height: 80vh;
+}
+
+#map {
+    height: 250px;
+    width: 100%;
+    margin-top: 30px;
+}
+
+.order {
+    height: 75%;
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    border-right: 2px solid #4D312C;
+}
+
+.cart-icon {
+    display: none;
+}
+
+.total {
+    font-size: 30px;
+    font-family: "Mitr", sans-serif;
+    margin-top: 40px;
+}
+
+.cart-item {
+    align-items: normal !important;
+
+    height: auto;
+    padding-bottom: 30px;
+}
+
+.cart-item div:first-child {
+    width: 60%;
+}
+
+.order-form {
+    margin-left: 40px;
+    width: 130%;
+}
+
+input {
+    appearance: none;
+    border-radius: 0;
+}
+
+.input {
+    display: flex;
+    flex-direction: column-reverse;
+    position: relative;
+    padding-top: 1.5rem;
+}
+
+.input + .input {
+    margin-top: 1.5rem;
+}
+
+.input-label {
+    color: #8597a3;
+    position: absolute;
+    top: 1.5rem;
+    transition: 0.25s ease;
+}
+
+.input-field {
+    border: 0;
+    z-index: 1;
+    background-color: transparent;
+    border-bottom: 2px solid #eee;
+    font: inherit;
+    font-size: 1.125rem;
+    padding: 0.25rem 0;
+}
+
+.input-field:focus, .input-field:valid {
+    outline: 0;
+    border-bottom-color: #fe5f41;
+}
+.input-field:focus + .input-label, .input-field:valid + .input-label {
+    color: #fe5f41;
+    transform: translateY(-1.5rem);
+}

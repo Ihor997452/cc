@@ -1,0 +1,269 @@
+@import url(https://fonts.googleapis.com/css2?family=Mitr:wght@300;400;500;600;700&family=Raleway:wght@300;400;500;600;700;800;900&display=swap);
+
+body {
+    background: #fff4f2;
+    overflow-x: hidden;
+}
+
+h4 {
+    font-family: "Mitr", sans-serif;
+    color: #4D312C;
+}
+
+.navigation-wrapper {
+    font-family: "Mitr", sans-serif;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;
+    width: 100%;
+}
+
+.navigation {
+    margin-left: 20px;
+}
+
+.navigation-bg {
+    background: whitesmoke;
+}
+
+.navigation-wrapper a {
+    color: #4D312C;
+    font-size: 20px;
+    font-weight: 500;
+    transition: all 0.3s;
+    text-decoration: none;
+    padding: 25px 10px;
+    position: relative;
+    top: 3px;
+}
+
+.navigation-wrapper a:hover {
+    color: #fe5f41;
+}
+
+.total {
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 0;
+    font-weight: 400;
+}
+
+.navigation a:after {
+    content: "";
+    position: absolute;
+    width: 0;
+    bottom: 17px;
+    right: 5px;
+    left: -5px;
+    height: 2px;
+    z-index: 1;
+    transition: all .4s ease-out 0s;
+    background: #fe5f41;
+}
+
+.navigation a:hover:after {
+    left: 0;
+    width: 100%;
+}
+
+.cart-icon {
+    position: relative;
+}
+
+.cart-icon:hover ~ .cart,
+.cart:hover {
+    right: 40px;
+}
+
+.cart {
+    width: 400px;
+    background: whitesmoke;
+    box-shadow: 2px 2px 2px rgba(254,95,65, .14), -2px -2px 2px rgba(254, 95, 65, 0.14);
+    position: absolute;
+    border-radius: 20px;
+    right: -30%;
+    top: 20px;
+    transition: 0.3s;
+    padding: 15px;
+}
+
+.cart-item {
+    width: 100%;
+    height: 100px;
+    overflow: hidden;
+    margin-top: 10px;
+}
+
+.cart-item p {
+    font-size: 18px;
+}
+
+.cart-item > div:first-child {
+    width: 35%;
+    height: 100%;
+}
+
+.cart-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    border-radius: 20px;
+}
+
+.trash-icon {
+    cursor: pointer !important;
+    top: 0 !important;
+    font-size: 20px;
+    transition: 0.3s;
+}
+
+.trash-icon {
+    color: orangered;
+}
+
+.button-small {
+    cursor: pointer;
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+
+    font-family: "Mitr",sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+
+    border-radius: 35px;
+    transition: 0.4s;
+
+    outline: none;
+    border: none;
+
+    padding: 10px 40px;
+
+    box-shadow: 0 15px 25px rgba(254,95,65,.14);
+    z-index: 1;
+
+    background: #fe5f41;
+    color: white;
+}
+
+.button-small:hover {
+    color: white;
+}
+
+.button-small::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: black;
+    width: 00%;
+    height: 100%;
+    border-radius: 35px;
+
+    transition: 0.3s;
+
+    opacity: 0;
+    z-index: -1;
+}
+
+.button-small:hover::before {
+    width: 100%;
+    opacity: 0.08;
+}
+
+.button {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+
+    font-family: "Mitr",sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+
+    border-radius: 35px;
+    transition: 0.4s;
+
+    padding: 15px 55px;
+
+    box-shadow: 0 15px 25px rgba(254,95,65,.14);
+    z-index: 1;
+
+    background: #fe5f41;
+    color: white;
+}
+
+.button:hover {
+    color: white;
+}
+
+.button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    background: black;
+    width: 00%;
+    height: 100%;
+    border-radius: 35px;
+
+    transition: 0.3s;
+
+    opacity: 0;
+    z-index: -1;
+}
+
+.button:hover::before {
+    width: 100%;
+    opacity: 0.08;
+}
+
+.button2 {
+    display: inline-block;
+    overflow: hidden;
+    position: relative;
+
+    font-family: "Mitr",sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+
+    border-radius: 35px;
+    transition: 0.4s;
+
+    padding: 15px 55px;
+
+    box-shadow: 0 15px 25px rgba(254,95,65,.14);
+    z-index: 1;
+
+    color: #fe5f41;
+    background: white;
+}
+
+.button2:hover {
+    color: white;
+}
+
+.button2:before {
+    content: "";
+    position: absolute;
+    top: -25%;
+    left: -25%;
+    background: #fe5f41;
+    width: 150%;
+    height: 250%;
+
+    opacity: 0;
+
+    border-radius: 50%;
+    transform: scale(0.1);
+    transition: 0.4s;
+    z-index: -1;
+}
+
+.button2:hover:before {
+    opacity: 1;
+    transform: scale(1);
+}

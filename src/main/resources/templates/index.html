@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <th:block th:include="fragments/general.html :: header"/>
+
+    <link rel="stylesheet" th:href="@{/css/index.css}">
+    <title>Home</title>
+</head>
+<body>
+
+    <section th:insert="fragments/general.html :: navigation"></section>
+
+    <section class="offer-wrapper d-flex align-items-center justify-content-start"
+             style="margin-left: 40px; height: 100vh; overflow: hidden">
+        <div class="offer">
+            <h1>
+                Lorem Ipsum Dolor <br>
+                sit amet, consectetur.
+            </h1>
+
+            <p>
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dignissimos ducimus nemo possimus sit vero? Itaque?
+            </p>
+
+            <div style="margin-top: 60px;">
+                <a class="button" href="#">Our Menu</a>
+                <a class="button2" href="#" style="margin-left: 30px">Make a Reservation</a>
+            </div>
+        </div>
+
+        <img th:src="@{/img/img.jpg}" alt="img" class="offer-img">
+    </section>
+
+    <section class="popular-dishes-wrapper d-flex align-content-center justify-content-center flex-column"
+             style="margin-left: 40px; margin-top: 60px; margin-right: 40px;">
+        <div class="d-flex justify-content-between align-content-center" style="width: 100%;">
+            <h2>
+                Popular Dishes
+            </h2>
+            <a class="button" href="/dishes">Full Menu</a>
+        </div>
+
+        <div style="width: calc(100% - 80px); margin-left: 40px; margin-top: 40px;" class="owl-carousel owl-theme">
+
+            <th:block th:each="item:${dishes}">
+                <div th:replace="fragments/general.html :: my-card(obj = item)"></div>
+            </th:block>
+        </div>
+    </section>
+
+    <th:block th:include="fragments/general.html :: scripts"/>
+
+    <script>
+        $('.owl-carousel').owlCarousel({
+            margin:20,
+            nav:true,
+            dots:false,
+            items:3,
+        })
+    </script>
+
+</body>
+</html>

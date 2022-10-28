@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+    <th:block th:include="fragments/general.html :: header"/>
+
+    <link rel="stylesheet" th:href="@{/css/order.css}">
+
+    <title>Order</title>
+</head>
+<body>
+
+    <section th:insert="fragments/general.html :: navigation"></section>
+
+    <section class="order-wrapper d-flex align-content-center justify-content-center"
+             style="margin-left: 40px; margin-top: 120px; margin-right: 40px;">
+        <div class="order">
+
+        </div>
+
+        <form action="/order" method="post" name="orderForm" class="order-form">
+            <div class="input">
+                <input name="name" type="text" class="input-field" required/>
+                <label class="input-label">Full name</label>
+            </div>
+            <div class="input">
+                <input name="email" type="email" class="input-field" required/>
+                <label class="input-label">Email</label>
+            </div>
+            <div class="input">
+                <input name="phone" type="tel" class="input-field" required/>
+                <label class="input-label">Phone Number</label>
+            </div>
+            <div class="input">
+                <input name="address" type="text" class="input-field" required/>
+                <label class="input-label">Address</label>
+            </div>
+
+            <button type="submit" class="button2" style="border: none; margin-top: 40px;">Order</button>
+        </form>
+    </section>
+    <th:block th:include="fragments/general.html :: scripts"/>
+
+    <script th:src="@{/js/order.js}"></script>
+
+</body>
+</html>

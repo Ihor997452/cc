@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:fragment="header">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <link rel="stylesheet" th:href="@{/plugins/owlcarousel/dist/assets/owl.carousel.min.css}">
+    <link rel="stylesheet" th:href="@{/plugins/owlcarousel/dist/assets/owl.theme.default.min.css}">
+
+    <link rel="stylesheet" th:href="@{/css/navigation.css}">
+</head>
+
+<body>
+    <section class="navigation-wrapper d-flex align-items-center justify-content-start"
+             style="padding: 20px" th:fragment="navigation">
+        <img th:src="@{/img/logo.png}" alt="logo">
+        <nav class="navigation">
+            <a href="/">Home</a>
+            <a href="/dishes">Menu</a>
+        </nav>
+
+        <nav style="margin-left: auto; margin-right: 40px;">
+            <a href="#" class="cart-icon">
+                <i class="fa-solid fa-cart-shopping"></i>
+            </a>
+
+            <div class="cart d-flex align-items-center flex-column" id="cart">
+                <h4 th:if="${session.cart == null || session.cart.orderItems.size() == 0}">
+                    Wow, such empty..
+                </h4>
+
+                <div style="width: 100%" th:if="${session.cart != null && session.cart.orderItems.size() != 0}">
+                    <div th:each="item:${session.cart.orderItems}"
+                         class="cart-item d-flex align-items-center justify-content-between">
+                        <div>
+                            <img th:src="@{${item.value.getDish().imgPath}}">
+                        </div>
+
+                        <div class="d-flex align-items-center">
+                            <p style="padding-right: 10px" th:text="${item.value.price}"></p>
+                            <i class="fa-solid fa-hryvnia-sign"></i>
+                        </div>
+
+                        <a th:onclick="|remove(${item.value.getDish().id})|" class="trash-icon">
+                            <i class="fa-solid fa-trash"></i>
+                        </a>
+                    </div>
+
+                    <th:block th:if="${session.cart.total != null}">
+                        <h5 class="total" th:inline="text">
+                            <span th:text="Total + ': ' + ${session.cart.total}"></span>
+                            <i class="fa-solid fa-hryvnia-sign"></i>
+                        </h5>
+                    </th:block>
+                </div>
+
+                <a href="/order" th:if="${session.cart != null && session.cart.orderItems.size() != 0}">Order</a>
+            </div>
+        </nav>
+    </section>
+
+    <div class="my-card" th:fragment="my-card(obj)" th:object="${__${obj}__}">
+        <div>
+            <img th:src="@{*{imgPath}}" style="width: 100%; height: 100%; object-fit: contain" alt="img">
+        </div>
+
+        <div class="my-card-content">
+            <div class="d-flex justify-content-between" style="margin: 5px">
+                <h3 th:text="*{name}"></h3>
+                <p style="color: #909090;" th:text="*{portionSize} + 'g'"></p>
+            </div>
+
+            <p th:text="*{description}" style="color: #707070;  margin: 10px 5px 5px;"></p>
+
+            <div style="margin: 30px 5px 5px;" class="d-flex align-content-center justify-content-between">
+                <input th:id="'q-' + *{id}" type="number" name="quantity" min="1" max="10" value="1" step="1">
+
+                <div class="d-flex align-items-center">
+                    <p style="padding-right: 10px" th:text="*{price}"></p>
+                    <i class="fa-solid fa-hryvnia-sign"></i>
+                </div>
+
+                <button class="button-small" type="submit"
+                        th:onclick="|order(*{id}, 'q-' + *{id})|">Order</button>
+            </div>
+        </div>
+    </div>
+
+    <th:block th:fragment="scripts">
+        <script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+        <script src="/plugins/owlcarousel/dist/owl.carousel.min.js"></script>
+        <script src="/plugins/inputspinner/input-spinner.js"></script>
+
+        <script th:src="@{/js/alerts.js}"></script>
+        <script th:src="@{/js/cartScript.js}"></script>
+        <script th:src="@{/js/dishScript.js}"></script>
+        <script th:src="@{/js/script.js}"></script>
+    </th:block>
+
+</body>
+</html>
